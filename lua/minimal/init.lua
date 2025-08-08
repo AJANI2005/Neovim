@@ -1,0 +1,5 @@
+require("minimal.lazy")
+require("minimal.keymaps")
+require("minimal.options")
+require("minimal.autocmd")
+require("minimal.terminal")
