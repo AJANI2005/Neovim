@@ -53,6 +53,9 @@ vim.keymap.set("n", "<leader>pa", function()
   print("file:", path)
 end, { desc = "Copy full file path" })
 
+-- Quickfix navigation
+vim.keymap.set("n", "<leader>cn", ":cn<CR>", { desc = "Next quickfix item" })
+vim.keymap.set("n", "<leader>cp", ":cp<CR>", { desc = "Previous quickfix item" })
 -- Clear quickfix list
 vim.keymap.set("n", "<leader>cc", function() vim.fn.setqflist({}, "r") end, { desc = "Clear quickfix list" })
 

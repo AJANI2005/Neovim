@@ -1,3 +1,5 @@
+local augroup = vim.api.nvim_create_augroup("UserConfig", {})
+
 -- Auto-close terminal when process exits
 vim.api.nvim_create_autocmd("TermClose", {
   group = augroup,
@@ -18,11 +20,11 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
 -- Floating Terminal
 
+-- terminal
 local terminal_state = {
   buf = nil,
   win = nil,
   is_open = false,
-  shell = "/usr/bin/zsh",
 }
 
 local function FloatingTerminal()
@@ -61,11 +63,7 @@ local function FloatingTerminal()
   vim.api.nvim_win_set_option(terminal_state.win, "winblend", 0)
 
   -- Set transparent background for the window
-  vim.api.nvim_win_set_option(
-    terminal_state.win,
-    "winhighlight",
-    "Normal:FloatingTermNormal,FloatBorder:FloatingTermBorder"
-  )
+  vim.api.nvim_win_set_option(terminal_state.win, "winhighlight", "Normal:FloatingTermNormal,FloatBorder:FloatingTermBorder")
 
   -- Define highlight groups for transparency
   vim.api.nvim_set_hl(0, "FloatingTermNormal", { bg = "none" })
@@ -81,7 +79,7 @@ local function FloatingTerminal()
     end
   end
 
-  if not has_terminal then vim.fn.termopen(terminal_state.shell) end
+  if not has_terminal then vim.fn.termopen(os.getenv("SHELL")) end
 
   terminal_state.is_open = true
   vim.cmd("startinsert")
@@ -97,14 +95,6 @@ local function FloatingTerminal()
     end,
     once = true,
   })
-end
-
--- Function to explicitly close the terminal
-local function CloseFloatingTerminal()
-  if terminal_state.is_open and vim.api.nvim_win_is_valid(terminal_state.win) then
-    vim.api.nvim_win_close(terminal_state.win, false)
-    terminal_state.is_open = false
-  end
 end
 
 -- Key mappings
