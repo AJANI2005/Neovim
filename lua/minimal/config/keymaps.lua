@@ -1,4 +1,6 @@
 vim.g.mapleader = " "
+vim.g.localleader = "\\"
+
 -- Explorer
 vim.keymap.set("n", "<leader>pv", "<cmd>Oil<CR>", { desc = "Oil File Explorer" })
 

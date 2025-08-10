@@ -3,8 +3,8 @@ vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 
 -- Environment
-vim.opt.shell = "zsh"
 vim.g.python3_host_prog = "/home/ajani/.conda/envs/nvim/bin/python3"
+vim.opt.shell = "zsh"
 
 -- Basic settings
 vim.opt.number = true -- Line numbers
