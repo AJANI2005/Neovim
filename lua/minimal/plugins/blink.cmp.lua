@@ -59,7 +59,14 @@ return {
           --    https://github.com/rafamadriz/friendly-snippets
           {
             "rafamadriz/friendly-snippets",
-            config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
+            config = function()
+              -- VSCode style snippets
+              require("luasnip.loaders.from_vscode").lazy_load()
+
+              -- React SnippetsS
+              require("luasnip").filetype_extend("javascript", { "javascriptreact" })
+              require("luasnip").filetype_extend("javascript", { "html" })
+            end,
           },
         },
         config = function()
